@@ -69,17 +69,18 @@ function renderHeader(){
       <a class="logo" href="index.html"><img src="assets/logo.png" alt="Quality360"></a>
       <nav class="nav" aria-label="Principal">
         <ul>
-          <li class="has-sub"><button aria-haspopup="true">Monopatines ▾</button>
-            <div class="submenu" role="menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="has-sub"><button aria-haspopup="true" aria-expanded="false">Monopatines ▾</button>
+            <div class="submenu" role="menu" hidden>
               <a href="g2-pro.html" role="menuitem">KuKirin G2 Pro</a>
             </div>
           </li>
-          <li class="has-sub"><button aria-haspopup="true">Servicio ▾</button>
-            <div class="submenu" role="menu">
+          <li class="has-sub"><button aria-haspopup="true" aria-expanded="false">Servicio ▾</button>
+            <div class="submenu" role="menu" hidden>
               <a href="service.html#ayuda" role="menuitem">Centro de ayuda</a>
               <a href="service.html#faq" role="menuitem">Preguntas frecuentes</a>
               <a href="service.html#montaje" role="menuitem">Fácil montaje</a>
-              <a href="service.html#manual" role="menuitem">Manual del monopatín</a>
+              <a href="service.html#manual" role="menuitem">Manual del patinete</a>
               <a href="service.html#garantia" role="menuitem">Garantía</a>
               <a href="service.html#envios" role="menuitem">Política de envíos</a>
               <a href="service.html#reembolso" role="menuitem">Política de reembolso</a>
@@ -87,11 +88,11 @@ function renderHeader(){
               <a href="service.html#distribuidor" role="menuitem">Conviértete en distribuidor</a>
             </div>
           </li>
+          <li><a href="index.html#reviews">Reseñas</a></li>
         </ul>
       </nav>
-      <div class="icons">
-        <button aria-label="Buscar">🔍</button>
-        <button aria-label="Cuenta">👤</button>
+      <div class="actions">
+        <button id="contact-btn" aria-controls="contactDrawer" aria-expanded="false">Contacto</button>
         <button id="cart-btn" aria-label="Carrito">🛒<span id="cart-count" class="badge">0</span></button>
       </div>
     </div>
