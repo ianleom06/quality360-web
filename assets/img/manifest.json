@@ -1,0 +1,7 @@
+{
+  "name": "Quality360",
+  "short_name": "Quality360",
+  "icons": [],
+  "start_url": "/",
+  "display": "standalone"
+}
