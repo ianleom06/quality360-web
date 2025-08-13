@@ -79,6 +79,23 @@
 </main>
 <footer id="site-footer"></footer>
 <div id="cart-drawer" class="drawer" aria-hidden="true"></div>
+<aside id="contactDrawer" hidden>
+  <div class="overlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <h2>Contacto</h2>
+      <button class="drawer-close" aria-label="Cerrar">×</button>
+    </div>
+    <div class="drawer-content">
+      <form id="contactForm">
+        <div><label for="contactName">Nombre</label><input type="text" id="contactName"></div>
+        <div><label for="contactEmail">Email</label><input type="email" id="contactEmail" required></div>
+        <div><label for="contactMessage">Mensaje</label><textarea id="contactMessage"></textarea></div>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </div>
+  </div>
+</aside>
 <div id="buy-bar" class="sticky-bar"><span>$1100</span><button class="btn" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD)">Añadir</button></div>
 <script type="application/ld+json">
 {
