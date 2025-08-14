@@ -72,14 +72,25 @@ function initCartDrawer(){
   const btn = document.getElementById('cart-btn');
   const drawer = document.getElementById('cart-drawer');
   if(!btn || !drawer) return;
-  btn.addEventListener('click', () => {
+  const overlay = drawer.querySelector('.overlay');
+  const closeBtn = drawer.querySelector('.drawer-close');
+
+  function open(){
     closeNavMenus();
-    drawer.classList.add('open');
-  });
-  drawer.addEventListener('click', e => {
-    if(e.target.classList.contains('drawer-close') || e.target === drawer) drawer.classList.remove('open');
-  });
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') drawer.classList.remove('open'); });
+    drawer.hidden = false;
+    requestAnimationFrame(()=> drawer.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    drawer.classList.remove('open');
+    drawer.addEventListener('transitionend',()=>{drawer.hidden=true;},{once:true});
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', open);
+  overlay.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
 }
 
 function initMenuDrawer(){
@@ -94,11 +105,13 @@ function initMenuDrawer(){
     btn.setAttribute('aria-expanded','true');
     drawer.hidden = false;
     requestAnimationFrame(()=> drawer.classList.add('open'));
+    document.body.style.overflow = 'hidden';
   }
   function close(){
     btn.setAttribute('aria-expanded','false');
     drawer.classList.remove('open');
     drawer.addEventListener('transitionend',()=>{drawer.hidden=true;}, {once:true});
+    document.body.style.overflow = '';
   }
 
   btn.addEventListener('click', open);

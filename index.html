@@ -62,7 +62,16 @@
     <button class="modal-close" aria-label="Cerrar">×</button>
     <form id="review-form">
       <div><label for="rev-name">Nombre</label><input id="rev-name" required></div>
-      <div><label for="rev-rating">Rating</label><input type="number" id="rev-rating" min="1" max="5" required></div>
+      <div>
+        <span>Rating</span>
+        <div class="rating-select">
+          <input type="radio" id="rev-star5" name="rev-rating" value="5" required><label for="rev-star5">★</label>
+          <input type="radio" id="rev-star4" name="rev-rating" value="4"><label for="rev-star4">★</label>
+          <input type="radio" id="rev-star3" name="rev-rating" value="3"><label for="rev-star3">★</label>
+          <input type="radio" id="rev-star2" name="rev-rating" value="2"><label for="rev-star2">★</label>
+          <input type="radio" id="rev-star1" name="rev-rating" value="1"><label for="rev-star1">★</label>
+        </div>
+      </div>
       <div><label for="rev-text">Comentario</label><textarea id="rev-text" required></textarea></div>
       <div><label for="rev-img">Imagen (opcional)</label><input type="file" id="rev-img" accept="image/*"></div>
       <button type="submit" class="btn btn--primary">Enviar</button>
@@ -71,7 +80,7 @@
 </div>
 </main>
 <footer id="site-footer"></footer>
-<div id="cart-drawer" class="drawer" aria-hidden="true"></div>
+<div id="cart-drawer" class="drawer" hidden></div>
 <aside id="contactDrawer" hidden>
   <div class="overlay"></div>
   <div class="drawer-panel">

@@ -45,15 +45,18 @@ function renderCart(){
   const drawer = document.getElementById('cart-drawer');
   if(!drawer) return;
   drawer.innerHTML = `
-    <div class="drawer-header">
-      <h2>Carrito</h2>
-      <button class="drawer-close" aria-label="Cerrar">×</button>
-    </div>
-    <div class="drawer-content" id="cart-items"></div>
-    <div class="drawer-footer">
-      <textarea id="cart-note" placeholder="Nota de pedido">${localStorage.getItem(NOTE_KEY)||''}</textarea>
-      <p>Subtotal: <span id="cart-subtotal">$0</span></p>
-      <button class="btn btn--primary" id="checkout-btn">Verificar</button>
+    <div class="overlay"></div>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2>Carrito</h2>
+        <button class="drawer-close" aria-label="Cerrar">×</button>
+      </div>
+      <div class="drawer-content" id="cart-items"></div>
+      <div class="drawer-footer">
+        <textarea id="cart-note" placeholder="Nota de pedido">${localStorage.getItem(NOTE_KEY)||''}</textarea>
+        <p>Subtotal: <span id="cart-subtotal">$0</span></p>
+        <button class="btn btn--primary" id="checkout-btn">Verificar</button>
+      </div>
     </div>`;
   const itemsEl = document.getElementById('cart-items');
   const cart = getCart();
