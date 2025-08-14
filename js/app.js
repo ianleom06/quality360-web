@@ -73,13 +73,13 @@ function renderHeader(){
   <div class="header">
     <div class="topbar container">
       <button id="menu-btn" aria-label="Menú">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
-      <a class="logo" href="index.html"><img src="assets/logo.png" alt="Quality360"></a>
+      <a class="logo" href="index.html"><img src="assets/logo.png" alt="Quality360"><span>Quality360</span></a>
       <button id="cart-btn" aria-label="Carrito">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="9" cy="21" r="1"/>
           <circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a1 1 0 0 0 .99.81h9.72a1 1 0 0 0 .99-.81L23 6H6"/>
@@ -165,7 +165,8 @@ function renderReviews(targetId, list){
   list.forEach(r=>{
     const li = document.createElement('li');
     li.className = 'review';
-    li.innerHTML = `<strong>${r.name}</strong> <span class="rating">${'★'.repeat(r.rating)}</span><br><small>${r.date}</small><p>${r.text}</p>`;
+    const stars = Array.from({length:5},(_,i)=>`<span class="${i<r.rating?'filled':'empty'}">★</span>`).join('');
+    li.innerHTML = `<strong>${r.name}</strong> <span class="rating">${stars}</span><br><small>${r.date}</small><p>${r.text}</p>`;
     if(r.img){
       const img = document.createElement('img');
       img.src = r.img;
@@ -204,7 +205,8 @@ function initReviewForm(){
   form.addEventListener('submit', e=>{
     e.preventDefault();
     const name = form.querySelector('#rev-name').value.trim();
-    const rating = parseInt(form.querySelector('#rev-rating').value,10);
+    const ratingEl = form.querySelector('input[name="rev-rating"]:checked');
+    const rating = ratingEl ? parseInt(ratingEl.value,10) : 0;
     const text = form.querySelector('#rev-text').value.trim();
     const file = form.querySelector('#rev-img').files[0];
     if(!name || !rating || !text) return;
