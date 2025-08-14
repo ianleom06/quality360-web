@@ -2,37 +2,88 @@
 .header {
   position: sticky;
   top: 0;
-  background: var(--header-bg);
-  color: var(--header-text);
+  background: var(--bg);
+  color: var(--text);
   border-bottom: 1px solid var(--line);
   z-index: 1000;
 }
 .topbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
   padding: 0.5rem 0;
 }
 .logo img {height:40px;}
-.nav ul {list-style:none;display:flex;gap:1rem;}
+.nav {justify-self: center;}
+.nav ul {list-style:none;display:flex;}
 .nav .has-sub {position:relative;}
 .nav a,
-.nav button {color:var(--header-text);background:none;padding:0.25rem 0;}
+.nav button {color:inherit;background:none;}
 .nav a:hover,
 .nav button:hover,
 .nav a:focus,
 .nav button:focus {color:var(--brand);}
-.nav .submenu {position:absolute;top:100%;left:0;background:var(--header-bg);border:1px solid var(--line);padding:0.5rem;min-width:200px;opacity:0;transform:translateY(0.5rem);transition:opacity 0.25s ease,transform 0.25s ease;}
+.nav .submenu {
+  position:absolute;
+  top:100%;
+  left:0;
+  background: var(--bg);
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  padding:8px 0;
+  min-width:220px;
+  opacity:0;
+  transform:translateY(0.5rem);
+  transition:opacity 0.2s ease,transform 0.2s ease;
+  z-index:1200;
+}
 .nav .submenu[hidden]{display:none;}
 .nav .submenu.open {opacity:1;transform:translateY(0);}
-.nav .submenu a {display:block;padding:0.25rem 0;color:var(--header-text);}
+.nav .submenu a {
+  display:block;
+  padding:10px 14px;
+  color:var(--text);
+  transition:background 0.15s ease;
+}
 .nav .submenu a:hover,
-.nav .submenu a:focus {background:var(--brand);color:var(--header-bg);}
-.actions {display:flex;gap:0.5rem;align-items:center;}
-.actions button{color:var(--header-text);}
+.nav .submenu a:focus {
+  background:rgba(0,0,0,0.05);
+}
+.actions {
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+  justify-self:end;
+}
+.actions button{
+  color:inherit;
+  position:relative;
+}
 .actions button:hover,
 .actions button:focus{color:var(--brand);}
-.badge {background:var(--brand);color:var(--header-bg);border-radius:50%;padding:0 6px;font-size:0.75rem;margin-left:2px;}
+.badge {
+  background:var(--brand);
+  color:var(--header-bg);
+  border-radius:50%;
+  padding:0 6px;
+  font-size:0.75rem;
+  margin-left:2px;
+}
+#cart-btn .badge {
+  position:absolute;
+  top:-4px;
+  right:-8px;
+  margin-left:0;
+}
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.3);
+  z-index:900;
+  display:none;
+}
+.nav-overlay.show{display:block;}
 
 /* Drawer */
 .drawer {position:fixed;top:0;right:-100%;width:300px;height:100%;background:var(--bg);color:var(--text);box-shadow:-2px 0 6px rgba(0,0,0,0.2);transition:right 0.3s;z-index:2000;display:flex;flex-direction:column;}

@@ -75,7 +75,7 @@ function renderHeader(){
               <a href="g2-pro.html" role="menuitem">KuKirin G2 Pro</a>
             </div>
           </li>
-          <li class="has-sub"><button aria-haspopup="true" aria-expanded="false">Servicio ▾</button>
+          <li class="has-sub"><button aria-haspopup="true" aria-expanded="false">Soporte ▾</button>
             <div class="submenu" role="menu" hidden>
               <a href="service.html#ayuda" role="menuitem">Centro de ayuda</a>
               <a href="service.html#faq" role="menuitem">Preguntas frecuentes</a>
@@ -88,12 +88,24 @@ function renderHeader(){
               <a href="service.html#distribuidor" role="menuitem">Conviértete en distribuidor</a>
             </div>
           </li>
-          <li><a href="index.html#reviews">Reseñas</a></li>
         </ul>
       </nav>
       <div class="actions">
-        <button id="contact-btn" aria-controls="contactDrawer" aria-expanded="false">Contacto</button>
-        <button id="cart-btn" aria-label="Carrito">🛒<span id="cart-count" class="badge">0</span></button>
+        <button id="contact-btn" aria-controls="contactDrawer" aria-expanded="false" aria-label="Contacto">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M4 21v-2a4 4 0 0 1 3-3.87"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+        <button id="cart-btn" aria-label="Carrito">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a1 1 0 0 0 .99.81h9.72a1 1 0 0 0 .99-.81L23 6H6"/>
+          </svg>
+          <span id="cart-count" class="badge">0</span>
+        </button>
       </div>
     </div>
   </div>`;

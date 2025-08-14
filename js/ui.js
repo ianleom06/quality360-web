@@ -4,6 +4,9 @@ function initNav(){
   const nav = document.querySelector('.nav');
   if(!nav) return;
   const buttons = $$('.has-sub > button', nav);
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
 
   function hide(menu){
     menu.classList.remove('open');
@@ -17,6 +20,8 @@ function initNav(){
         hide(submenu);
       }
     });
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
   }
   closeNavMenus = closeAll;
 
@@ -24,6 +29,7 @@ function initNav(){
     const submenu = btn.nextElementSibling;
     btn.addEventListener('click', e => {
       e.stopPropagation();
+      const isDesktop = window.matchMedia('(min-width:768px)').matches;
       if(btn.getAttribute('aria-expanded') === 'true'){
         closeAll();
       }else{
@@ -31,6 +37,10 @@ function initNav(){
         submenu.hidden = false;
         requestAnimationFrame(()=> submenu.classList.add('open'));
         btn.setAttribute('aria-expanded','true');
+        if(!isDesktop){
+          overlay.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        }
       }
     });
     btn.parentElement.addEventListener('mouseenter', () => {
@@ -49,6 +59,7 @@ function initNav(){
     if(window.matchMedia('(min-width:768px)').matches) closeAll();
   });
 
+  overlay.addEventListener('click', closeAll);
   document.addEventListener('click', e => {
     if(!nav.contains(e.target)) closeAll();
   });
