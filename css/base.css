@@ -5,8 +5,8 @@
   --line: #e5e7eb;
   --header-bg: #0F1117;
   --header-text: #E5EAF0;
-  --brand: #F59E0B;
-  --brand-hover: #D97706;
+  --brand: #FFC107;
+  --brand-hover: #E0A800;
   --focus: #FDE68A;
   --font-base: Arial, sans-serif;
 }
@@ -51,21 +51,32 @@ button {
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-align: center;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
   background: var(--brand);
   color: var(--header-bg);
-  border: none;
-  text-align: center;
-  transition: background 0.2s;
+}
+.btn--primary:hover,
+.btn--primary:focus {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.btn:hover,
-.btn:focus {
-  background: var(--brand-hover);
+.btn--dark {
+  background: var(--header-bg);
+  color: var(--header-text);
 }
-
-.btn.secondary {
-  background: var(--text);
-  color: var(--bg);
+.btn--dark:hover,
+.btn--dark:focus {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 input,

@@ -53,7 +53,7 @@ function renderCart(){
     <div class="drawer-footer">
       <textarea id="cart-note" placeholder="Nota de pedido">${localStorage.getItem(NOTE_KEY)||''}</textarea>
       <p>Subtotal: <span id="cart-subtotal">$0</span></p>
-      <button class="btn" id="checkout-btn">Verificar</button>
+      <button class="btn btn--primary" id="checkout-btn">Verificar</button>
     </div>`;
   const itemsEl = document.getElementById('cart-items');
   const cart = getCart();

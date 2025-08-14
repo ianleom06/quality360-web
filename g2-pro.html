@@ -33,29 +33,29 @@
         <span class="badge-pill">Pagos seguros</span>
       </div>
       <ul id="quick-specs"></ul>
-      <button class="btn" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD)">Añadir al carrito</button>
-      <button class="btn secondary" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD);location.href='checkout.html'">Comprar ahora</button>
+      <button class="btn btn--primary" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD)">Añadir al carrito</button>
+      <button class="btn btn--dark" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD);location.href='checkout.html'">Comprar ahora</button>
     </div>
   </div>
 
   <section>
     <h2>Destacados</h2>
     <div class="benefits">
-      <div><h3>Suspensión doble</h3><p>Mayor control en terrenos irregulares.</p></div>
-      <div><h3>Frenos de disco</h3><p>Seguridad en cada frenada.</p></div>
-      <div><h3>Luces integradas</h3><p>Visibilidad nocturna mejorada.</p></div>
-      <div><h3>Plegado rápido</h3><p>Guárdalo en segundos.</p></div>
+      <div class="fade-up"><h3>Suspensión doble</h3><p>Mayor control en terrenos irregulares.</p></div>
+      <div class="fade-up"><h3>Frenos de disco</h3><p>Seguridad en cada frenada.</p></div>
+      <div class="fade-up"><h3>Luces integradas</h3><p>Visibilidad nocturna mejorada.</p></div>
+      <div class="fade-up"><h3>Plegado rápido</h3><p>Guárdalo en segundos.</p></div>
     </div>
   </section>
-  <section class="media">
-    <div class="media-item">
-      <img src="assets/section1.jpg" alt="Motor potente">
-      <div><h2>Motor de 600 W</h2><p>Acelera con fuerza en cada salida.</p></div>
-    </div>
-    <div class="media-item">
-      <img src="assets/section2.jpg" alt="Batería confiable">
-      <div><h2>Batería 48 V</h2><p>Hasta 58 km con una sola carga.</p></div>
-    </div>
+  <section class="content-block fade-up">
+    <h2>Motor de 600 W</h2>
+    <img src="assets/section1.jpg" alt="Motor potente">
+    <p>Acelera con fuerza en cada salida.</p>
+  </section>
+  <section class="content-block fade-up">
+    <h2>Batería 48 V</h2>
+    <img src="assets/section2.jpg" alt="Batería confiable">
+    <p>Hasta 58 km con una sola carga.</p>
   </section>
 
   <section>
@@ -74,6 +74,7 @@
 
   <section id="reviews">
     <h2>Reseñas de clientes</h2>
+    <button class="btn btn--primary" id="add-review-btn">Agregar reseña</button>
     <div id="reviews-list"></div>
   </section>
 </main>
@@ -91,12 +92,25 @@
         <div><label for="contactName">Nombre</label><input type="text" id="contactName"></div>
         <div><label for="contactEmail">Email</label><input type="email" id="contactEmail" required></div>
         <div><label for="contactMessage">Mensaje</label><textarea id="contactMessage"></textarea></div>
-        <button type="submit" class="btn">Enviar</button>
+        <button type="submit" class="btn btn--primary">Enviar</button>
       </form>
     </div>
   </div>
 </aside>
-<div id="buy-bar" class="sticky-bar"><span>$1100</span><button class="btn" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD)">Añadir</button></div>
+<div id="buy-bar" class="sticky-bar"><img id="buy-bar-img" src="assets/g2pro_main.jpg" alt="G2 Pro"><span id="buy-bar-price">$1100</span><button class="btn btn--primary" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD)">Añadir al carrito</button></div>
+<div id="review-modal" class="modal" hidden>
+  <div class="overlay"></div>
+  <div class="modal-panel">
+    <button class="modal-close" aria-label="Cerrar">×</button>
+    <form id="review-form">
+      <div><label for="rev-name">Nombre</label><input id="rev-name" required></div>
+      <div><label for="rev-rating">Rating</label><input type="number" id="rev-rating" min="1" max="5" required></div>
+      <div><label for="rev-text">Comentario</label><textarea id="rev-text" required></textarea></div>
+      <div><label for="rev-img">Imagen (opcional)</label><input type="file" id="rev-img" accept="image/*"></div>
+      <button type="submit" class="btn btn--primary">Enviar</button>
+    </form>
+  </div>
+</div>
 <script type="application/ld+json">
 {
 "@context":"https://schema.org/","@type":"Product","name":"KuKirin G2 Pro","image":"assets/g2pro_main.jpg","description":"Monopatín eléctrico de 45 km/h y autonomía hasta 58 km.","sku":"KUKIRIN-G2PRO","brand":{"@type":"Brand","name":"KuKirin"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"1100","availability":"https://schema.org/InStock"}}
