@@ -39,7 +39,7 @@ const PRODUCT = {
 };
 
 // Reseñas
-const REVIEWS = [
+const INITIAL_REVIEWS = [
   {name:"Ana M.", date:"2024-05-02", rating:5, text:"Llegó rapidísimo y la potencia sorprende."},
   {name:"Carlos R.", date:"2024-04-18", rating:4, text:"Buen alcance, ideal para ir al trabajo."},
   {name:"Lucía P.", date:"2024-03-29", rating:5, text:"El frenado doble da mucha seguridad."},
@@ -54,10 +54,16 @@ const REVIEWS = [
   {name:"Ricardo N.", date:"2023-10-20", rating:4, text:"Sería genial que fuera plegado más liviano."}
 ];
 
+let STORED_REVIEWS = JSON.parse(localStorage.getItem('q360_reviews')||'[]');
+let REVIEWS = [...INITIAL_REVIEWS, ...STORED_REVIEWS];
+
 // Rating promedio
-const avg = REVIEWS.reduce((a,r)=>a+r.rating,0)/REVIEWS.length;
-PRODUCT.rating = Math.round(avg*10)/10;
-PRODUCT.reseñas = REVIEWS.length;
+function updateReviewStats(){
+  const avg = REVIEWS.reduce((a,r)=>a+r.rating,0)/REVIEWS.length;
+  PRODUCT.rating = Math.round(avg*10)/10;
+  PRODUCT.reseñas = REVIEWS.length;
+}
+updateReviewStats();
 
 // Render header & footer
 function renderHeader(){
@@ -66,49 +72,58 @@ function renderHeader(){
   header.innerHTML = `
   <div class="header">
     <div class="topbar container">
+      <button id="menu-btn" aria-label="Menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
       <a class="logo" href="index.html"><img src="assets/logo.png" alt="Quality360"></a>
-      <nav class="nav" aria-label="Principal">
+      <button id="cart-btn" aria-label="Carrito">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a1 1 0 0 0 .99.81h9.72a1 1 0 0 0 .99-.81L23 6H6"/>
+        </svg>
+        <span id="cart-count" class="badge">0</span>
+      </button>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="g2-pro.html">Monopatines</a></li>
+        <li class="has-sub"><button aria-haspopup="true" aria-expanded="false">Soporte ▾</button>
+          <div class="submenu" role="menu" hidden>
+            <a href="service.html#ayuda" role="menuitem">Centro de ayuda</a>
+            <a href="service.html#faq" role="menuitem">Preguntas frecuentes</a>
+            <a href="service.html#montaje" role="menuitem">Fácil montaje</a>
+            <a href="service.html#manual" role="menuitem">Manual del monopatín</a>
+            <a href="service.html#garantia" role="menuitem">Garantía</a>
+            <a href="service.html#envios" role="menuitem">Política de envíos</a>
+            <a href="service.html#reembolso" role="menuitem">Política de reembolso</a>
+            <a href="service.html#seguimiento" role="menuitem">Seguimiento de pedidos</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <aside id="navDrawer" hidden>
+    <div class="overlay"></div>
+    <div class="drawer-panel">
+      <button class="drawer-close" aria-label="Cerrar">×</button>
+      <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li class="has-sub"><button aria-haspopup="true" aria-expanded="false">Monopatines ▾</button>
-            <div class="submenu" role="menu" hidden>
-              <a href="g2-pro.html" role="menuitem">KuKirin G2 Pro</a>
-            </div>
-          </li>
-          <li class="has-sub"><button aria-haspopup="true" aria-expanded="false">Soporte ▾</button>
-            <div class="submenu" role="menu" hidden>
-              <a href="service.html#ayuda" role="menuitem">Centro de ayuda</a>
-              <a href="service.html#faq" role="menuitem">Preguntas frecuentes</a>
-              <a href="service.html#montaje" role="menuitem">Fácil montaje</a>
-              <a href="service.html#manual" role="menuitem">Manual del patinete</a>
-              <a href="service.html#garantia" role="menuitem">Garantía</a>
-              <a href="service.html#envios" role="menuitem">Política de envíos</a>
-              <a href="service.html#reembolso" role="menuitem">Política de reembolso</a>
-              <a href="service.html#seguimiento" role="menuitem">Seguimiento de pedidos</a>
-              <a href="service.html#distribuidor" role="menuitem">Conviértete en distribuidor</a>
-            </div>
-          </li>
+          <li><a href="g2-pro.html">Monopatines</a></li>
+          <li><a href="service.html#ayuda">Centro de ayuda</a></li>
+          <li><a href="service.html#faq">Preguntas frecuentes</a></li>
+          <li><a href="service.html#manual">Manual del monopatín</a></li>
+          <li><a href="service.html#garantia">Garantía</a></li>
+          <li><a href="service.html#envios">Política de envíos</a></li>
+          <li><a href="service.html#reembolso">Política de reembolso</a></li>
+          <li><a href="service.html#seguimiento">Seguimiento de pedidos</a></li>
         </ul>
       </nav>
-      <div class="actions">
-        <button id="contact-btn" aria-controls="contactDrawer" aria-expanded="false" aria-label="Contacto">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M4 21v-2a4 4 0 0 1 3-3.87"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </button>
-        <button id="cart-btn" aria-label="Carrito">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="9" cy="21" r="1"/>
-            <circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a1 1 0 0 0 .99.81h9.72a1 1 0 0 0 .99-.81L23 6H6"/>
-          </svg>
-          <span id="cart-count" class="badge">0</span>
-        </button>
-      </div>
     </div>
-  </div>`;
+  </aside>`;
 }
 
 function renderFooter(){
@@ -130,10 +145,10 @@ function renderFooter(){
         <p><a href="service.html#garantia">Garantía</a></p>
       </div>
       <div>
-        <h4>Newsletter</h4>
+        <h4>Suscríbete</h4>
         <form onsubmit="event.preventDefault();alert('Demo');">
           <input type="email" placeholder="Tu email" aria-label="Email">
-          <button class="btn" type="submit">Suscribirme</button>
+          <button class="btn btn--primary" type="submit">Suscribirme</button>
         </form>
       </div>
     </div>
@@ -151,10 +166,67 @@ function renderReviews(targetId, list){
     const li = document.createElement('li');
     li.className = 'review';
     li.innerHTML = `<strong>${r.name}</strong> <span class="rating">${'★'.repeat(r.rating)}</span><br><small>${r.date}</small><p>${r.text}</p>`;
+    if(r.img){
+      const img = document.createElement('img');
+      img.src = r.img;
+      img.alt = '';
+      img.style.marginTop = '0.5rem';
+      li.appendChild(img);
+    }
     ul.appendChild(li);
   });
   el.innerHTML = '';
   el.appendChild(ul);
+}
+
+function initReviewForm(){
+  const btn = document.getElementById('add-review-btn');
+  const modal = document.getElementById('review-modal');
+  if(!btn || !modal) return;
+  const overlay = modal.querySelector('.overlay');
+  const closeBtn = modal.querySelector('.modal-close');
+  const form = modal.querySelector('#review-form');
+
+  function open(){
+    modal.hidden = false;
+    requestAnimationFrame(()=> modal.classList.add('open'));
+  }
+  function close(){
+    modal.classList.remove('open');
+    modal.addEventListener('transitionend', ()=>{modal.hidden=true;}, {once:true});
+  }
+
+  btn.addEventListener('click', open);
+  overlay.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', e=>{if(e.key==='Escape') close();});
+
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const name = form.querySelector('#rev-name').value.trim();
+    const rating = parseInt(form.querySelector('#rev-rating').value,10);
+    const text = form.querySelector('#rev-text').value.trim();
+    const file = form.querySelector('#rev-img').files[0];
+    if(!name || !rating || !text) return;
+    function save(img=''){
+      const review = {name, rating, text, img, date:new Date().toISOString().split('T')[0]};
+      STORED_REVIEWS.push(review);
+      localStorage.setItem('q360_reviews', JSON.stringify(STORED_REVIEWS));
+      REVIEWS = [...INITIAL_REVIEWS, ...STORED_REVIEWS];
+      updateReviewStats();
+      renderReviews('reviews-list', REVIEWS);
+      renderReviews('reviews-preview', REVIEWS.slice(0,3));
+      form.reset();
+      close();
+    }
+    if(file){
+      const reader = new FileReader();
+      reader.onload = () => save(reader.result);
+      reader.readAsDataURL(file);
+    }else{
+      save();
+    }
+  });
 }
 
 // Quick specs
@@ -202,6 +274,10 @@ function renderBuyBox(){
   if(price){price.textContent = `$${PRODUCT.precioUSD}`;}
   if(old){old.textContent = `$${PRODUCT.precioAntesUSD}`;}
   if(rating){rating.textContent = `${PRODUCT.rating} (${PRODUCT.reseñas})`;}
+  const barPrice = $('#buy-bar-price');
+  const barImg = $('#buy-bar-img');
+  if(barPrice) barPrice.textContent = `$${PRODUCT.precioUSD}`;
+  if(barImg) barImg.src = PRODUCT.images.hero;
 }
 
 // Init
@@ -216,4 +292,5 @@ window.addEventListener('DOMContentLoaded', () => {
   renderSpecs();
   initGallery();
   renderBuyBox();
+  initReviewForm();
 });
