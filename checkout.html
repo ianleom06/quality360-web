@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Quality360</title>
+<meta name="description" content="Completa tu compra del KuKirin G2 Pro.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Checkout Quality360">
+<meta property="og:description" content="Proceso de compra seguro.">
+<meta property="og:image" content="assets/g2pro_main.jpg">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<script defer src="js/app.js"></script>
+<script defer src="js/ui.js"></script>
+<script defer src="js/cart.js"></script>
+<script defer src="js/checkout.js"></script>
+</head>
+<body>
+<header id="site-header"></header>
+<main class="container checkout">
+  <form id="checkout-form" class="checkout-form">
+    <h1>Finalizar compra</h1>
+    <section>
+      <h2>Contacto</h2>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Teléfono" required>
+    </section>
+    <section id="shipping">
+      <h2>Envío</h2>
+      <input data-addr type="text" placeholder="Nombre" required>
+      <input data-addr type="text" placeholder="Apellido" required>
+      <input data-addr type="text" placeholder="DNI/ID" required>
+      <input data-addr type="text" placeholder="Dirección" required>
+      <input data-addr type="text" placeholder="Referencia de domicilio" required>
+      <input data-addr type="text" placeholder="Ciudad" required>
+      <input data-addr type="text" placeholder="Provincia/Región" required>
+      <input data-addr type="text" placeholder="Código Postal" required>
+      <input data-addr type="text" placeholder="País" required>
+      <label><input type="checkbox" id="pickup"> Retiro en punto</label>
+      <p id="pickup-info"></p>
+      <textarea placeholder="Notas de entrega"></textarea>
+    </section>
+    <button class="btn btn--primary" type="submit">Finalizar compra</button>
+  </form>
+  <aside class="checkout-summary">
+    <h2>Resumen</h2>
+    <ul id="summary-items"></ul>
+    <p>Subtotal: <span id="summary-subtotal">$0</span></p>
+    <p>Envío: <span>$0</span></p>
+    <p>Total: <strong id="summary-total">$0</strong></p>
+    <div class="payment-methods">
+      <button type="button">Visa</button>
+      <button type="button">Mastercard</button>
+      <button type="button">PayPal</button>
+      <button type="button">Mercado Pago</button>
+    </div>
+  </aside>
+</main>
+<footer id="site-footer"></footer>
+<div id="cart-drawer" class="drawer" hidden></div>
+<aside id="contactDrawer" hidden>
+  <div class="overlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <h2>Contacto</h2>
+      <button class="drawer-close" aria-label="Cerrar">×</button>
+    </div>
+    <div class="drawer-content">
+      <form id="contactForm">
+        <div><label for="contactName">Nombre</label><input type="text" id="contactName"></div>
+        <div><label for="contactEmail">Email</label><input type="email" id="contactEmail" required></div>
+        <div><label for="contactMessage">Mensaje</label><textarea id="contactMessage"></textarea></div>
+        <button type="submit" class="btn btn--primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+</aside>
+</body>
+</html>
