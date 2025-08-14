@@ -72,6 +72,8 @@ function initCartDrawer(){
   const btn = document.getElementById('cart-btn');
   const drawer = document.getElementById('cart-drawer');
   if(!btn || !drawer) return;
+  const count = document.getElementById('cart-count');
+  if(count) count.remove();
   const overlay = drawer.querySelector('.overlay');
   const closeBtn = drawer.querySelector('.drawer-close');
 
