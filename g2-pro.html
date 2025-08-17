@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KuKirin G2 Pro | Quality360</title>
+<meta name="description" content="KuKirin G2 Pro: velocidad de 45 km/h, autonomía hasta 58 km y motor de 600 W. Compra en Quality360 con envío 24h.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="KuKirin G2 Pro">
+<meta property="og:description" content="Potencia y autonomía para tus recorridos diarios.">
+<meta property="og:image" content="assets/g2pro_main.jpg">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<script defer src="js/app.js"></script>
+<script defer src="js/ui.js"></script>
+<script defer src="js/cart.js"></script>
+</head>
+<body>
+<header id="site-header"></header>
+<main class="container">
+  <div class="product">
+    <div class="gallery">
+      <img id="main-img" src="" alt="KuKirin G2 Pro" style="width:100%;max-width:400px;">
+      <div class="gallery-thumbs" id="thumbs"></div>
+    </div>
+    <div class="buy-box">
+      <h1>KuKirin G2 Pro</h1>
+      <p><span id="price"></span> <s id="old-price"></s></p>
+      <p>⭐ <span id="rating"></span></p>
+      <div class="badges">
+        <span class="badge-pill">Envío 24h</span>
+        <span class="badge-pill">Garantía 6 meses</span>
+        <span class="badge-pill">Pagos seguros</span>
+      </div>
+      <ul id="quick-specs"></ul>
+      <button class="btn btn--primary" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD)">Añadir al carrito</button>
+      <button class="btn btn--dark" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD);location.href='checkout.html'">Comprar ahora</button>
+    </div>
+  </div>
+
+  <section>
+    <h2>Destacados</h2>
+    <div class="benefits">
+      <div class="fade-up"><h3>Suspensión doble</h3><p>Mayor control en terrenos irregulares.</p></div>
+      <div class="fade-up"><h3>Frenos de disco</h3><p>Seguridad en cada frenada.</p></div>
+      <div class="fade-up"><h3>Luces integradas</h3><p>Visibilidad nocturna mejorada.</p></div>
+      <div class="fade-up"><h3>Plegado rápido</h3><p>Guárdalo en segundos.</p></div>
+    </div>
+  </section>
+  <section class="content-block fade-up">
+    <h2>Motor de 600 W</h2>
+    <img src="assets/section1.jpg" alt="Motor potente">
+    <p>Acelera con fuerza en cada salida.</p>
+  </section>
+  <section class="content-block fade-up">
+    <h2>Batería 48 V</h2>
+    <img src="assets/section2.jpg" alt="Batería confiable">
+    <p>Hasta 58 km con una sola carga.</p>
+  </section>
+
+  <section>
+    <h2>Especificaciones</h2>
+    <table class="table" id="specs-table"><tbody></tbody></table>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <div class="accordion">
+      <div class="accordion-item"><button class="accordion-button">¿Es resistente al agua?</button><div class="accordion-content"><p>Cuenta con certificación IP54 contra salpicaduras.</p></div></div>
+      <div class="accordion-item"><button class="accordion-button">¿Cuánto tarda en cargarse?</button><div class="accordion-content"><p>Entre 7 y 8 horas para una carga completa.</p></div></div>
+      <div class="accordion-item"><button class="accordion-button">¿Soporta pendientes?</button><div class="accordion-content"><p>Puede subir inclinaciones aproximadas de 19°.</p></div></div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>Reseñas de clientes</h2>
+    <button class="btn btn--primary" id="add-review-btn">Agregar reseña</button>
+    <div id="reviews-list"></div>
+  </section>
+</main>
+<footer id="site-footer"></footer>
+<div id="cart-drawer" class="drawer" hidden></div>
+<aside id="contactDrawer" hidden>
+  <div class="overlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <h2>Contacto</h2>
+      <button class="drawer-close" aria-label="Cerrar">×</button>
+    </div>
+    <div class="drawer-content">
+      <form id="contactForm">
+        <div><label for="contactName">Nombre</label><input type="text" id="contactName"></div>
+        <div><label for="contactEmail">Email</label><input type="email" id="contactEmail" required></div>
+        <div><label for="contactMessage">Mensaje</label><textarea id="contactMessage"></textarea></div>
+        <button type="submit" class="btn btn--primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+</aside>
+<div id="buy-bar" class="sticky-bar"><img id="buy-bar-img" src="assets/g2pro_main.jpg" alt="G2 Pro"><span id="buy-bar-price">$1100</span><button class="btn btn--primary" onclick="addProduct(PRODUCT.sku,PRODUCT.nombre,PRODUCT.precioUSD)">Añadir al carrito</button></div>
+<div id="review-modal" class="modal" hidden>
+  <div class="overlay"></div>
+  <div class="modal-panel">
+    <button class="modal-close" aria-label="Cerrar">×</button>
+    <form id="review-form">
+      <div><label for="rev-name">Nombre</label><input id="rev-name" required></div>
+      <div>
+        <span>Rating</span>
+        <div class="rating-select">
+          <input type="radio" id="rev-star5" name="rev-rating" value="5" required><label for="rev-star5">★</label>
+          <input type="radio" id="rev-star4" name="rev-rating" value="4"><label for="rev-star4">★</label>
+          <input type="radio" id="rev-star3" name="rev-rating" value="3"><label for="rev-star3">★</label>
+          <input type="radio" id="rev-star2" name="rev-rating" value="2"><label for="rev-star2">★</label>
+          <input type="radio" id="rev-star1" name="rev-rating" value="1"><label for="rev-star1">★</label>
+        </div>
+      </div>
+      <div><label for="rev-text">Comentario</label><textarea id="rev-text" required></textarea></div>
+      <div><label for="rev-img">Imagen (opcional)</label><input type="file" id="rev-img" accept="image/*"></div>
+      <button type="submit" class="btn btn--primary">Enviar</button>
+    </form>
+  </div>
+</div>
+<script type="application/ld+json">
+{
+"@context":"https://schema.org/","@type":"Product","name":"KuKirin G2 Pro","image":"assets/g2pro_main.jpg","description":"Monopatín eléctrico de 45 km/h y autonomía hasta 58 km.","sku":"KUKIRIN-G2PRO","brand":{"@type":"Brand","name":"KuKirin"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"1100","availability":"https://schema.org/InStock"}}
+</script>
+</body>
+</html>

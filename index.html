@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quality360 | KuKirin G2 Pro</title>
+<meta name="description" content="Compra el KuKirin G2 Pro con envío rápido y garantía de 6 meses en Quality360.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Quality360 - KuKirin G2 Pro">
+<meta property="og:description" content="Monopatín eléctrico con gran autonomía y potencia.">
+<meta property="og:image" content="assets/hero_home.jpg">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<script defer src="js/app.js"></script>
+<script defer src="js/ui.js"></script>
+<script defer src="js/cart.js"></script>
+</head>
+<body>
+<header id="site-header"></header>
+<main>
+<section class="hero" role="region" aria-label="Carrusel destacado">
+  <div class="hero__slides">
+    <div class="hero__slide" data-bg="assets/hero_home.jpg">
+      <div class="hero__content">
+        <a href="g2-pro.html" class="btn btn--primary">Ver G2 Pro</a>
+        <a href="#reviews" class="btn btn--dark">Leer reseñas</a>
+      </div>
+    </div>
+    <div class="hero__slide" data-bg="assets/hero_home2.jpg">
+      <div class="hero__content">
+        <a href="g2-pro.html" class="btn btn--primary">Ver G2 Pro</a>
+        <a href="#reviews" class="btn btn--dark">Leer reseñas</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="benefits container">
+  <div class="fade-up"><img src="assets/benefit1.jpg" alt="Soporte real"><h3>Soporte real</h3><p>Asistencia por expertos.</p></div>
+  <div class="fade-up"><img src="assets/benefit2.jpg" alt="Entrega express"><h3>Entrega express</h3><p>Llega en 24 horas.</p></div>
+  <div class="fade-up"><img src="assets/benefit3.jpg" alt="Garantía 6 meses"><h3>Garantía 6 meses</h3><p>Cubre defectos de fábrica.</p></div>
+  <div class="fade-up"><img src="assets/benefit4.jpg" alt="Pagos seguros"><h3>Pagos seguros</h3><p>Protección en cada transacción.</p></div>
+</section>
+<section class="content-block container fade-up">
+  <h2>Suspensión doble</h2>
+  <img src="assets/section1.jpg" alt="Suspensión avanzada">
+  <p>Amortigua las irregularidades de la calle para un viaje cómodo.</p>
+</section>
+<section class="content-block container fade-up">
+  <h2>Autonomía extendida</h2>
+  <img src="assets/section2.jpg" alt="Larga autonomía">
+  <p>Hasta 58 km para que llegues más lejos sin preocupaciones.</p>
+</section>
+<section class="content-block container fade-up">
+  <h2>Autonomía extendida</h2>
+  <img src="assets/section2.jpg" alt="Larga autonomía">
+  <p>Hasta 58 km para que llegues más lejos sin preocupaciones.</p>
+</section>
+<section class="container" id="reviews">
+  <h2>Reseñas</h2>
+  <button class="btn btn--primary" id="add-review-btn">Agregar reseña</button>
+  <div id="reviews-preview"></div>
+  <p style="text-align:center;margin-top:1rem;"><a class="btn btn--primary" href="g2-pro.html#reviews">Ver más</a></p>
+</section>
+<div id="review-modal" class="modal" hidden>
+  <div class="overlay"></div>
+  <div class="modal-panel">
+    <button class="modal-close" aria-label="Cerrar">×</button>
+    <form id="review-form">
+      <div><label for="rev-name">Nombre</label><input id="rev-name" required></div>
+      <div>
+        <span>Rating</span>
+        <div class="rating-select">
+          <input type="radio" id="rev-star5" name="rev-rating" value="5" required><label for="rev-star5">★</label>
+          <input type="radio" id="rev-star4" name="rev-rating" value="4"><label for="rev-star4">★</label>
+          <input type="radio" id="rev-star3" name="rev-rating" value="3"><label for="rev-star3">★</label>
+          <input type="radio" id="rev-star2" name="rev-rating" value="2"><label for="rev-star2">★</label>
+          <input type="radio" id="rev-star1" name="rev-rating" value="1"><label for="rev-star1">★</label>
+        </div>
+      </div>
+      <div><label for="rev-text">Comentario</label><textarea id="rev-text" required></textarea></div>
+      <div><label for="rev-img">Imagen (opcional)</label><input type="file" id="rev-img" accept="image/*"></div>
+      <button type="submit" class="btn btn--primary">Enviar</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer id="site-footer"></footer>
+<div id="cart-drawer" class="drawer" hidden></div>
+<aside id="contactDrawer" hidden>
+  <div class="overlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <h2>Contacto</h2>
+      <button class="drawer-close" aria-label="Cerrar">×</button>
+    </div>
+    <div class="drawer-content">
+      <form id="contactForm">
+        <div><label for="contactName">Nombre</label><input type="text" id="contactName"></div>
+        <div><label for="contactEmail">Email</label><input type="email" id="contactEmail" required></div>
+        <div><label for="contactMessage">Mensaje</label><textarea id="contactMessage"></textarea></div>
+        <button type="submit" class="btn btn--primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+</aside>
+</body>
+</html>
