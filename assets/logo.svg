@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="48" fill="#333333" />
-  <text x="50" y="60" font-size="45" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="600">IL</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="InnovaLabs L spark">
+  <title>InnovaLabs</title>
+  <g fill="currentColor">
+    <!-- L -->
+    <rect x="28" y="30" width="12" height="40" rx="6"/>
+    <rect x="28" y="60" width="36" height="12" rx="6"/>
+    <!-- spark -->
+    <polygon points="72,20 78,26 72,32 66,26"/>
+  </g>
 </svg>
