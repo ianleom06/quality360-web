@@ -1,0 +1,169 @@
+:root {
+  --primary: #00c853;
+  --primary-dark: #009624;
+  --text-light: #f5f5f5;
+  --text-muted: #cccccc;
+  --bg-dark: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #222;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.top-bar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-light);
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+  position: relative;
+  padding: 0 1rem;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--primary-dark);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+main {
+  padding: 2rem 1rem 4rem;
+}
+
+.contact-block {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+}
+
+.contact-label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.contact-list li {
+  margin: 1rem 0;
+}
+
+.contact-list a {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+.contact-list a:hover,
+.contact-list a:focus {
+  text-decoration: underline;
+  outline: 2px dashed var(--primary-dark);
+  outline-offset: 3px;
+}
+
+.site-footer {
+  background: var(--bg-dark);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px dashed var(--primary);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    transition: none;
+  }
+}
