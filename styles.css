@@ -1,6 +1,8 @@
 :root {
-  --primary: #444444;
-  --primary-dark: #000000;
+  --primary: #444444;              /* brand dark button */ 
+  --primary-dark: #000000;         /* brand dark hover */
+  --wa: #25D366;                   /* WhatsApp green */
+  --wa-dark: #1EBB57;              /* WhatsApp hover */
   --text-light: #f5f5f5;
   --text-muted: #cccccc;
   --bg-dark: #111111;
@@ -23,9 +25,7 @@ img { max-width: 100%; height: auto; display: block; }
 .top-bar { position: absolute; top: 1rem; left: 1rem; }
 
 .branding { display: flex; align-items: center; text-decoration: none; color: var(--text-light); }
-
 .logo { width: 40px; height: 40px; margin-right: 0.5rem; }
-
 .brand-name { font-size: 1.25rem; font-weight: 600; }
 
 /* Hero */
@@ -44,23 +44,62 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-content h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
 .hero-content p { margin-bottom: 1.5rem; font-size: 1.1rem; }
 
-/* Button */
+/* Buttons */
 .btn {
-  display: inline-block; padding: 0.75rem 1.5rem;
+  display: inline-block; padding: 0.8rem 1.6rem;
   background: var(--primary); color: #fff;
-  border-radius: 4px; text-decoration: none; font-weight: 600;
-  transition: background 0.2s ease-in-out;
+  border-radius: 12px; text-decoration: none; font-weight: 700;
+  transition: background .2s ease, transform .08s ease, box-shadow .2s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 .btn:hover, .btn:focus { background: var(--primary-dark); outline: 2px solid #fff; outline-offset: 2px; }
+.btn:active { transform: translateY(1px) scale(.99); }
+
+/* WhatsApp-styled CTA (hero) */
+.btn--whatsapp { background: var(--wa); }
+.btn--whatsapp:hover, .btn--whatsapp:focus { background: var(--wa-dark); }
 
 /* Main */
 main { padding: 2rem 1rem 4rem; color: var(--text-light); }
 
-/* Contact block */
+/* Contact block (container) */
 .contact-block {
-  max-width: 700px; margin: 0 auto; text-align: center;
-  background: rgba(0, 0, 0, 0.6); padding: 1.5rem; border-radius: 8px;
+  max-width: 720px; margin: 0 auto; text-align: left;
+  background: rgba(0, 0, 0, 0.6); padding: 1.25rem; border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(6px);
 }
+.contact-block h2 { text-align: center; margin: .25rem 0 .5rem; }
+.hint { text-align:center; margin:.25rem 0 1rem; opacity:.85; }
+
+/* New — Action tiles (touch-friendly links) */
+.action-grid { display: grid; gap: 12px; margin-top: .5rem; }
+.action {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  text-decoration: none; color: var(--text-light);
+  transition: transform .08s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.action:hover, .action:focus-visible {
+  border-color: rgba(255,255,255,.35);
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  background: rgba(255,255,255,.08);
+  outline: none;
+}
+.action:active { transform: scale(.985); }
+
+.icon { width: 22px; height: 22px; flex: 0 0 22px; opacity: .95; }
+.action-text { display: grid; line-height: 1.1; }
+.action-label { font-weight: 800; letter-spacing: .2px; }
+.action-value { font-size: .97rem; opacity: .85; }
+.chev { margin-left: auto; font-weight: 900; opacity: .75; }
+
+/* (Legacy) Old list styles — kept for safety, not used anymore */
 .contact-list { list-style: none; padding: 0; margin: 2rem 0 0; }
 .contact-label { font-weight: 600; margin-right: 0.5rem; }
 .contact-list li { margin: 1rem 0; }
@@ -81,14 +120,23 @@ main { padding: 2rem 1rem 4rem; color: var(--text-light); }
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+/* Accessibility */
 :focus-visible { outline: 2px dashed var(--text-light); outline-offset: 4px; }
 
+/* Staggers */
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 
+/* Responsive tweaks */
+@media (min-width: 640px) {
+  .hero-content h1 { font-size: 3rem; }
+  .contact-block { padding: 1.5rem 1.25rem; }
+}
+
 /* Motion reduce */
 @media (prefers-reduced-motion: reduce) {
   .fade-in { transition: none; }
+  .action, .btn { transition: none; }
 }
